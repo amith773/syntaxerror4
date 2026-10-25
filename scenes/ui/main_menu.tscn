@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://c42374yvw26mw"]
+
+[ext_resource type="Script" uid="uid://c5nkj5lrlcibt" path="res://scripts/ui/main_menu.gd" id="1_script"]
+[ext_resource type="Shader" uid="uid://bla5nwln2kpwh" path="res://scenes/ui/main_menu.gdshader" id="2_1g8jr"]
+[ext_resource type="VideoStream" uid="uid://dkq38hkppocac" path="res://assets/videos/startingv1.ogv" id="3_1g8jr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bgark"]
+shader = ExtResource("2_1g8jr")
+shader_parameter/blur_strength = 2.0
+
+[node name="MainMenu" type="Control" unique_id=2013842351]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="background" type="TextureRect" parent="." unique_id=1551088930]
+material = SubResource("ShaderMaterial_bgark")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="." unique_id=583385181]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 95.0
+offset_bottom = 165.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.4, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "SYNTAX ERROR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="." unique_id=1056778296]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 165.0
+offset_bottom = 205.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8, 0.82, 0.9, 1)
+theme_override_font_sizes/font_size = 18
+text = "Some mistakes can be undone."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IntroVideo" type="VideoStreamPlayer" parent="." unique_id=508907712]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("3_1g8jr")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=892777038]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuVBox" type="VBoxContainer" parent="CenterContainer" unique_id=1007729574]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="StartButton" type="Button" parent="CenterContainer/MenuVBox" unique_id=686752905]
+custom_minimum_size = Vector2(220, 55)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "START GAME"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/MenuVBox" unique_id=283138793]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+text = "QUIT"
