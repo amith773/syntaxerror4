@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://csqmxwmmf17u7"]
+
+[ext_resource type="Texture2D" uid="uid://bw6puaiuocdnu" path="res://assets/sprites/campus/GateBackground.png" id="1_a5ib4"]
+[ext_resource type="Texture2D" uid="uid://bum1f4hp1xxha" path="res://assets/sprites/objects/ground.png" id="2_lqbmj"]
+[ext_resource type="Texture2D" uid="uid://do7ikpjidrted" path="res://assets/sprites/characters/security_guard.png" id="3_mycyf"]
+[ext_resource type="Script" uid="uid://b216hnwigie3s" path="res://scripts/levels/security_guard.gd" id="4_mycyf"]
+[ext_resource type="Texture2D" uid="uid://c11a0oxypsoux" path="res://assets/sprites/objects/rock.png" id="4_t4h4j"]
+[ext_resource type="Script" uid="uid://vrf34fn0ubf0" path="res://scripts/levels/mg_player.gd" id="5_snlp7"]
+[ext_resource type="Texture2D" uid="uid://b4nf7gcufbjw5" path="res://assets/sprites/characters/angry_guard.png" id="5_t4h4j"]
+[ext_resource type="Script" uid="uid://54i31kl20erc" path="res://scripts/levels/stone.gd" id="7_snlp7"]
+[ext_resource type="Texture2D" uid="uid://b5kbhh6s1yd7r" path="res://assets/sprites/characters/ProtagonistArt.png" id="8_ppee6"]
+[ext_resource type="Texture2D" uid="uid://0s2p3dbnsuh5" path="res://assets/sprites/characters/protagonist_idle.png" id="8_t4h4j"]
+[ext_resource type="Script" uid="uid://b085caqke8rb1" path="res://scenes/levels/level_exit.gd" id="11_08eim"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ne653"]
+size = Vector2(815.6605, 75.05151)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_edtui"]
+size = Vector2(97.56299, 1958.7275)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dy5kh"]
+size = Vector2(1521.1017, 1136.7952)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktfx4"]
+size = Vector2(681.2019, 460.09253)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbr3k"]
+size = Vector2(70, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c12rt"]
+size = Vector2(26.333328, 253)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75uos"]
+size = Vector2(20, 443)
+
+[node name="Node2D" type="Node2D" unique_id=1606071974]
+scale = Vector2(0.75, 0.75)
+
+[node name="GateBackground" type="Sprite2D" parent="." unique_id=1903536974]
+z_index = -10
+position = Vector2(836, 470.5)
+texture = ExtResource("1_a5ib4")
+
+[node name="Ground" type="Sprite2D" parent="." unique_id=482508420]
+z_index = -11
+position = Vector2(602.00006, 867)
+scale = Vector2(1.4724264, 0.69285715)
+texture = ExtResource("2_lqbmj")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground" unique_id=714355960]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D" unique_id=169982357]
+position = Vector2(28.184723, -49.072144)
+scale = Vector2(0.9999999, 1)
+shape = SubResource("RectangleShape2D_ne653")
+
+[node name="SecurityGuard" type="Sprite2D" parent="." unique_id=925700774]
+position = Vector2(784, 713.00006)
+scale = Vector2(0.22549444, 0.20931958)
+texture = ExtResource("3_mycyf")
+flip_h = true
+script = ExtResource("4_mycyf")
+normal_texture = ExtResource("3_mycyf")
+angry_texture = ExtResource("5_t4h4j")
+
+[node name="guardblocker" type="StaticBody2D" parent="SecurityGuard" unique_id=345940983]
+scale = Vector2(1, 0.99999994)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecurityGuard/guardblocker" unique_id=2005644515]
+position = Vector2(-359.20996, -291.42114)
+shape = SubResource("RectangleShape2D_edtui")
+
+[node name="Area2D" type="Area2D" parent="SecurityGuard" unique_id=2032907080]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecurityGuard/Area2D" unique_id=2081070368]
+position = Vector2(-310.42902, 28.664145)
+scale = Vector2(1, 0.99999976)
+shape = SubResource("RectangleShape2D_dy5kh")
+
+[node name="Stone" type="Sprite2D" parent="." unique_id=1803688514 groups=["stone_pickup"]]
+position = Vector2(277, 739)
+scale = Vector2(0.09101559, 0.10432689)
+texture = ExtResource("4_t4h4j")
+script = ExtResource("7_snlp7")
+
+[node name="Area2D" type="Area2D" parent="Stone" unique_id=760548931]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stone/Area2D" unique_id=546119270]
+position = Vector2(-21.974365, -38.34082)
+shape = SubResource("RectangleShape2D_ktfx4")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1169721140]
+script = ExtResource("5_snlp7")
+
+[node name="ProtagonistArt" type="Sprite2D" parent="Player" unique_id=2028809165]
+position = Vector2(173.51062, 721)
+scale = Vector2(0.30700064, 0.2870814)
+texture = ExtResource("8_t4h4j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1562833967]
+position = Vector2(184, 736)
+shape = SubResource("RectangleShape2D_dbr3k")
+
+[node name="ProtagonistWithStone" type="Sprite2D" parent="Player" unique_id=666475208]
+visible = false
+position = Vector2(171, 726)
+scale = Vector2(0.5288809, 0.5)
+texture = ExtResource("8_ppee6")
+
+[node name="LevelExit" type="Area2D" parent="." unique_id=894605910]
+script = ExtResource("11_08eim")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit" unique_id=190700825]
+position = Vector2(1234.5, 714.5)
+shape = SubResource("RectangleShape2D_c12rt")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=933849955]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1805799292]
+position = Vector2(1255, 653)
+shape = SubResource("RectangleShape2D_75uos")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=176739419]
+position = Vector2(48, 664)
+shape = SubResource("RectangleShape2D_75uos")
+
+[connection signal="body_entered" from="SecurityGuard/Area2D" to="SecurityGuard" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="SecurityGuard/Area2D" to="SecurityGuard" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Stone/Area2D" to="Stone" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Stone/Area2D" to="Stone" method="_on_area_2d_body_exited"]

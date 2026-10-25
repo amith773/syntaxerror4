@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://brwdd3sgkv2vh"]
+
+[ext_resource type="Script" uid="uid://b64mk0wxmpjor" path="res://scripts/levels/lbs_ground_3a.gd" id="1_jw7gc"]
+[ext_resource type="Texture2D" uid="uid://btqry3qnbsa6x" path="res://scenes/levels/assets/lbs_und/lbs_ground_background_400x225.png" id="1_ksj1h"]
+[ext_resource type="Script" uid="uid://tw5dx4tm4egv" path="res://scenes/levels/building_player.gd" id="4_jw7gc"]
+[ext_resource type="Texture2D" uid="uid://dwsr15g8xcw37" path="res://assets/sprites/characters/protaginist_idle.png" id="5_cdfql"]
+[ext_resource type="Texture2D" uid="uid://bx7n2hurt54xp" path="res://scenes/levels/Broken Red Alarm Clock Sprite.png" id="6_cdfql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0m8s"]
+size = Vector2(81.5, 177)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jw7gc"]
+size = Vector2(106, 232)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_alati"]
+size = Vector2(89.25, 231.25)
+
+[node name="LBSGround" type="Node2D" unique_id=427458252]
+script = ExtResource("1_jw7gc")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=843408155]
+position = Vector2(579, 330)
+scale = Vector2(2.88, 2.88)
+texture = ExtResource("1_ksj1h")
+
+[node name="BrokenClock" type="Sprite2D" parent="." unique_id=1342363450]
+position = Vector2(800.00006, 540.00006)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("6_cdfql")
+
+[node name="BuildingPlayer" type="CharacterBody2D" parent="." unique_id=193154836]
+script = ExtResource("4_jw7gc")
+
+[node name="StudentSprite" type="Sprite2D" parent="BuildingPlayer" unique_id=1922195276]
+position = Vector2(96.00001, 494)
+scale = Vector2(0.28985506, 0.28330657)
+texture = ExtResource("5_cdfql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingPlayer" unique_id=16285612]
+position = Vector2(95.25, 502)
+shape = SubResource("RectangleShape2D_b0m8s")
+
+[node name="ExitTrigger" type="Area2D" parent="." unique_id=2096526495]
+
+[node name="LoopingBarrier" type="CollisionShape2D" parent="ExitTrigger" unique_id=997096187]
+position = Vector2(1009, 438)
+shape = SubResource("RectangleShape2D_jw7gc")
+
+[node name="ExitDetectionShape" type="CollisionShape2D" parent="ExitTrigger" unique_id=1066500033]
+position = Vector2(985, 429.625)
+shape = SubResource("RectangleShape2D_alati")
+
+[node name="ErrorMessage" type="Label" parent="." unique_id=1376089353]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="FlagInteract" type="Area2D" parent="." unique_id=1141585910]
+
+[node name="BenchInteract" type="Area2D" parent="." unique_id=970290240]
+position = Vector2(84, 150)

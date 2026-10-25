@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://d04jkb4wf8l7p"]
+
+[ext_resource type="Texture2D" uid="uid://daomiguibkhig" path="res://assets/sprites/campus/library_bg2.png" id="1_dcubq"]
+[ext_resource type="Script" uid="uid://7lyrmljngklx" path="res://scripts/levels/library_player.gd" id="2_pv033"]
+[ext_resource type="Texture2D" uid="uid://dwsr15g8xcw37" path="res://assets/sprites/characters/protaginist_idle.png" id="3_l6aeh"]
+[ext_resource type="Texture2D" uid="uid://bolovrfqew2i3" path="res://assets/sprites/characters/worried_player.png" id="4_pv033"]
+[ext_resource type="Texture2D" uid="uid://ci4mjt65x37ck" path="res://assets/sprites/characters/balloons.png" id="5_i5haf"]
+[ext_resource type="Script" uid="uid://xxg4x3fciu1m" path="res://scripts/levels/balloons.gd" id="6_aawxi"]
+[ext_resource type="Script" uid="uid://dlarc6527cd3m" path="res://scenes/levels/level_exit4.gd" id="7_l6aeh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_60e8h"]
+size = Vector2(70, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3di7v"]
+size = Vector2(10, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4isuj"]
+size = Vector2(400, 550)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgark"]
+size = Vector2(10, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwjbb"]
+size = Vector2(1000, 20)
+
+[node name="LibraryLevel" type="Node2D" unique_id=1168153686]
+position = Vector2(-101, -56)
+
+[node name="background" type="Sprite2D" parent="." unique_id=1789556030]
+position = Vector2(685, 371)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_dcubq")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=2088411255]
+position = Vector2(514, 290)
+script = ExtResource("2_pv033")
+
+[node name="PlayerSprite" type="Sprite2D" parent="Player" unique_id=100441200]
+position = Vector2(-250, 274.875)
+scale = Vector2(0.23285487, 0.25498405)
+texture = ExtResource("3_l6aeh")
+
+[node name="WorriedSprite" type="Sprite2D" parent="Player" unique_id=52755725]
+visible = false
+position = Vector2(-249, 279.5)
+scale = Vector2(0.2825485, 0.31021196)
+texture = ExtResource("4_pv033")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=405782571]
+position = Vector2(-250, 285)
+shape = SubResource("RectangleShape2D_60e8h")
+
+[node name="CatchPoint" type="Area2D" parent="." unique_id=2142241477]
+position = Vector2(900, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CatchPoint" unique_id=1332419726]
+position = Vector2(0, 563)
+shape = SubResource("RectangleShape2D_3di7v")
+
+[node name="Balloons" type="Sprite2D" parent="." unique_id=1741586639]
+position = Vector2(190.00018, 508.99997)
+scale = Vector2(0.2724088, 0.2772905)
+texture = ExtResource("5_i5haf")
+script = ExtResource("6_aawxi")
+float_height = 300.0
+move_right_distance = 930.0
+
+[node name="InteractionArea" type="Area2D" parent="Balloons" unique_id=1024646257]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Balloons/InteractionArea" unique_id=957560223]
+position = Vector2(0, 26.46582)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_4isuj")
+
+[node name="LevelExit" type="Area2D" parent="." unique_id=286471448]
+script = ExtResource("7_l6aeh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit" unique_id=400149629]
+position = Vector2(1118, 562)
+shape = SubResource("RectangleShape2D_bgark")
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1211104486]
+position = Vector2(514, 290)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=947164568]
+position = Vector2(196, 369)
+shape = SubResource("RectangleShape2D_vwjbb")

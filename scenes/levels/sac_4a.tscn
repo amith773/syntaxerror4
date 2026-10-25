@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://d3tpxu53m602a"]
+
+[ext_resource type="Script" uid="uid://bhgv8biqmqsij" path="res://scripts/levels/sac_4a.gd" id="1_tx8ng"]
+[ext_resource type="Texture2D" uid="uid://dnvbhy4gjksm4" path="res://assets/sprites/objects/broken_cable.png" id="2_f52av"]
+[ext_resource type="Texture2D" uid="uid://b2a3lyxd62h2o" path="res://assets/sprites/campus/SAC_bg.png" id="2_n1cxb"]
+[ext_resource type="Texture2D" uid="uid://cf022sfoxt1uo" path="res://assets/sprites/objects/sdslabs-lobby-map-style-closed.png" id="3_f52av"]
+[ext_resource type="Texture2D" uid="uid://bum1f4hp1xxha" path="res://assets/sprites/objects/ground.png" id="4_pmmaj"]
+[ext_resource type="Texture2D" uid="uid://danbp50duuq3a" path="res://assets/sprites/objects/chandelier-modern.png" id="5_s3ro0"]
+[ext_resource type="Texture2D" uid="uid://cxugopvkye4d5" path="res://assets/sprites/objects/cable-single.png" id="6_lad2h"]
+[ext_resource type="Texture2D" uid="uid://sp6tfvy3nml0" path="res://assets/sprites/objects/file-cart.png" id="7_05a1c"]
+[ext_resource type="Texture2D" uid="uid://0s2p3dbnsuh5" path="res://assets/sprites/characters/protagonist_idle.png" id="8_58ywt"]
+[ext_resource type="Script" uid="uid://dcxiapm4ekqx" path="res://scenes/levels/level_exit3.gd" id="10_f52av"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dy5kh"]
+size = Vector2(818.46375, 164)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75uos"]
+size = Vector2(65, 173)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_75uos"]
+a = Vector2(1643, 407)
+b = Vector2(1640, 845)
+
+[node name="Node2D" type="Node2D" unique_id=363566240]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_tx8ng")
+
+[node name="SAC_bg" type="Sprite2D" parent="." unique_id=970595782]
+position = Vector2(-247.88126, -135.34792)
+scale = Vector2(1.2953125, 1.2791666)
+texture = ExtResource("2_n1cxb")
+offset = Vector2(836, 470.5)
+
+[node name="ClosedDoorsBG" type="Sprite2D" parent="." unique_id=469894745]
+visible = false
+position = Vector2(-247.88126, -135.34792)
+scale = Vector2(1.2953125, 1.2791666)
+texture = ExtResource("3_f52av")
+offset = Vector2(836, 470.5)
+
+[node name="Ground" type="Sprite2D" parent="." unique_id=407711110]
+z_index = -1
+position = Vector2(833, 850)
+scale = Vector2(2.0294118, 1)
+texture = ExtResource("4_pmmaj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=685994647]
+position = Vector2(2.2173767, -5)
+shape = SubResource("RectangleShape2D_dy5kh")
+
+[node name="ChandelierModern" type="Sprite2D" parent="." unique_id=1274305193]
+position = Vector2(624.00006, 192)
+scale = Vector2(0.32291666, 0.33024693)
+texture = ExtResource("5_s3ro0")
+
+[node name="CableSingle" type="Sprite2D" parent="." unique_id=1952217984]
+position = Vector2(1087.9285, 759)
+scale = Vector2(0.5985526, 0.32352942)
+texture = ExtResource("6_lad2h")
+flip_h = true
+
+[node name="BrokenCable" type="Sprite2D" parent="." unique_id=153081808]
+visible = false
+position = Vector2(1124, 750.00006)
+scale = Vector2(1.4139191, 0.7900763)
+texture = ExtResource("2_f52av")
+flip_h = true
+
+[node name="FileCart" type="Sprite2D" parent="." unique_id=788552057]
+position = Vector2(1304, 643)
+scale = Vector2(0.34833333, 0.3247549)
+texture = ExtResource("7_05a1c")
+flip_h = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1237252517]
+z_index = 1
+
+[node name="ProtagonistIdle" type="Sprite2D" parent="CharacterBody2D" unique_id=1700720658]
+position = Vector2(159.99998, 659)
+scale = Vector2(0.34688997, 0.3393142)
+texture = ExtResource("8_58ywt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=2047598129]
+z_index = 1
+position = Vector2(159.5, 671.5)
+shape = SubResource("RectangleShape2D_75uos")
+
+[node name="ChandelierStart" type="Marker2D" parent="." unique_id=1892549100]
+position = Vector2(617, 135)
+
+[node name="AccidentTrigger" type="Marker2D" parent="." unique_id=1144464823]
+position = Vector2(1379, 701)
+
+[node name="CartStopPosition" type="Marker2D" parent="." unique_id=1327474378]
+position = Vector2(631, 652)
+
+[node name="ChandelierFall" type="Marker2D" parent="." unique_id=1165959286]
+position = Vector2(626, 649)
+
+[node name="ChandelierCartStop" type="Marker2D" parent="." unique_id=313839663]
+position = Vector2(622, 460)
+
+[node name="LevelExit" type="Area2D" parent="." unique_id=1986679653]
+script = ExtResource("10_f52av")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit" unique_id=410706130]
+shape = SubResource("SegmentShape2D_75uos")

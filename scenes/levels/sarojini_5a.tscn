@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://cnvnl288f5dra"]
+
+[ext_resource type="Texture2D" uid="uid://bwg0pwsxurrtm" path="res://assets/sprites/characters/sarojini_bhawan_pixel_background.png" id="1_uafqe"]
+[ext_resource type="Texture2D" uid="uid://dwsr15g8xcw37" path="res://assets/sprites/characters/protaginist_idle.png" id="2_rnrxm"]
+[ext_resource type="Texture2D" uid="uid://xeqey0ccjwrs" path="res://assets/sprites/characters/Gemini_Generated_Image_7ods847ods847ods.png" id="2_sxdcp"]
+[ext_resource type="Script" uid="uid://dbt163h6rg8td" path="res://scripts/levels/sarojini_player.gd" id="2_ty4lc"]
+[ext_resource type="Script" uid="uid://d2q7av7n4bsms" path="res://scripts/levels/sarojini_girl.gd" id="3_rnrxm"]
+[ext_resource type="Texture2D" uid="uid://8pake1575ogd" path="res://assets/sprites/characters/Gemini_Generated_Image_huzhbjhuzhbjhuzh.png" id="4_aad8n"]
+[ext_resource type="Texture2D" uid="uid://cvv65uiy2t6rx" path="res://assets/sprites/characters/Gemini_Generated_Image_u6f5zmu6f5zmu6f5.png" id="4_ty4lc"]
+[ext_resource type="Texture2D" uid="uid://cp8jpeafs6xa6" path="res://assets/sprites/characters/Gemini_Generated_Image_x8e5mdx8e5mdx8e5.png" id="6_d7e1u"]
+[ext_resource type="Script" uid="uid://bv8gbisi0b7de" path="res://scripts/levels/girl_detection.gd" id="7_6bdae"]
+[ext_resource type="Script" uid="uid://c3sx215bbgyc6" path="res://scripts/levels/sarojini_clothes.gd" id="9_72dhr"]
+[ext_resource type="Texture2D" uid="uid://bdtsbk8kx071k" path="res://assets/sprites/characters/Gemini_Generated_Image_buzgejbuzgejbuzg.png" id="10_50g4h"]
+[ext_resource type="Script" uid="uid://clmvuvhfmc54e" path="res://scripts/levels/clothes_interaction.gd" id="11_50g4h"]
+[ext_resource type="Script" uid="uid://cfyvqmwkwyvtc" path="res://scenes/levels/level_exit2.gd" id="13_b8psn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c12rt"]
+size = Vector2(106, 295)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ib01s"]
+size = Vector2(216, 286)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50g4h"]
+size = Vector2(236, 271)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jryt5"]
+size = Vector2(121.5, 277)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jryt5"]
+a = Vector2(1, 651)
+b = Vector2(2, -1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3yifs"]
+size = Vector2(13, 648)
+
+[node name="Node2D" type="Node2D" unique_id=1318558290]
+
+[node name="background" type="Sprite2D" parent="." unique_id=755962320]
+position = Vector2(582.99994, 333.00006)
+scale = Vector2(0.42536232, 0.42258883)
+texture = ExtResource("1_uafqe")
+
+[node name="player" type="CharacterBody2D" parent="." unique_id=1240918119]
+script = ExtResource("2_ty4lc")
+normal_texture = ExtResource("2_rnrxm")
+disguise_texture = ExtResource("4_aad8n")
+
+[node name="Sprite2D" type="Sprite2D" parent="player" unique_id=1729888233]
+z_index = 10
+position = Vector2(391.625, 428.25)
+scale = Vector2(0.43749988, 0.4791332)
+texture = ExtResource("2_rnrxm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=1966981393]
+z_index = 10
+position = Vector2(388, 427.5)
+shape = SubResource("RectangleShape2D_c12rt")
+
+[node name="girl" type="Sprite2D" parent="." unique_id=2088740982]
+position = Vector2(896, 420)
+scale = Vector2(0.43222895, 0.38648468)
+texture = ExtResource("2_sxdcp")
+flip_h = true
+script = ExtResource("3_rnrxm")
+normal_texture = ExtResource("2_sxdcp")
+alert_texture = ExtResource("6_d7e1u")
+
+[node name="girldetection" type="Area2D" parent="." unique_id=1067565]
+collision_mask = 513
+script = ExtResource("7_6bdae")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="girldetection" unique_id=679696323]
+position = Vector2(853, 423)
+shape = SubResource("RectangleShape2D_ib01s")
+
+[node name="Clothes" type="Sprite2D" parent="." unique_id=1623321258]
+position = Vector2(167.99997, 362.99997)
+scale = Vector2(0.7476679, 0.55896455)
+texture = ExtResource("4_ty4lc")
+script = ExtResource("9_72dhr")
+empty_hanger_texture = ExtResource("10_50g4h")
+
+[node name="ClothesInteraction" type="Area2D" parent="." unique_id=1707003583]
+script = ExtResource("11_50g4h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClothesInteraction" unique_id=1145357913]
+position = Vector2(165, 372.5)
+shape = SubResource("RectangleShape2D_50g4h")
+
+[node name="GirlBarrier" type="StaticBody2D" parent="." unique_id=2132321221]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GirlBarrier" unique_id=2062156436]
+position = Vector2(902.75, 424.5)
+shape = SubResource("RectangleShape2D_jryt5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1474619241]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=21363210]
+shape = SubResource("SegmentShape2D_jryt5")
+
+[node name="LevelExit" type="Area2D" parent="." unique_id=634169398]
+z_index = 10
+script = ExtResource("13_b8psn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit" unique_id=1428526867]
+position = Vector2(1109, 326)
+shape = SubResource("RectangleShape2D_3yifs")
+
+[connection signal="body_entered" from="girldetection" to="girl" method="_on_girldetection_body_entered"]
+[connection signal="body_exited" from="girldetection" to="girl" method="_on_girldetection_body_exited"]
